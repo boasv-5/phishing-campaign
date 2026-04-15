@@ -1,26 +1,396 @@
+index.html
+
+HTML file
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn Schoolopdracht</title>
+    <title>Phishing Awareness Test - HMS Haagse Milieu Services</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f4f4f4;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background-color: #004d26;
+            padding: 16px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #00a651;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .logo-text {
+            color: white;
+        }
+
+        .logo-text h1 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .header-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background-color: #ff9800;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .alert-banner .icon {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .card-green {
+            border-left: 5px solid #00a651;
+        }
+
+        .card h2 {
+            color: #004d26;
+            font-size: 26px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            color: #004d26;
+            font-size: 20px;
+            margin-bottom: 12px;
+            margin-top: 8px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+
+        .reassurance-box {
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .reassurance-box .check {
+            font-size: 28px;
+            color: #00a651;
+            flex-shrink: 0;
+        }
+
+        .reassurance-box p {
+            margin: 0;
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tip-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: #555;
+        }
+
+        .tip-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tip-number {
+            background-color: #00a651;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .tip-list li strong {
             color: #333;
         }
-        p {
-            line-height: 1.6;
-            color: #666;
+
+        .example-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .example-box p {
+            color: #e65100;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .what-happened {
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .what-happened p {
+            margin: 4px 0;
+            font-size: 15px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #004d26;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin: 4px 0;
+        }
+
+        .footer a {
+            color: #81c784;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 20px;
+            }
+            .header-nav {
+                display: none;
+            }
+            .card {
+                padding: 24px;
+            }
+            .card h2 {
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Welkom op mijn pagina</h1>
-    <p>Dit is mijn schoolopdracht. Hier kan je meer informatie vinden over...</p>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-logo">
+            <div class="logo-icon">HMS</div>
+            <div class="logo-text">
+                <h1>Haagse Milieu Services</h1>
+                <span>Een schoon en leefbaar Den Haag</span>
+            </div>
+        </div>
+        <nav class="header-nav">
+            <a href="https://nvhms.nl" target="_blank">Terug naar nvhms.nl</a>
+        </nav>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <span class="icon">⚠️</span> Dit was een phishing-simulatie — er is niets aan de hand!
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+
+        <!-- Geruststelling -->
+        <div class="card card-green">
+            <h2>Geen zorgen, dit was een test!</h2>
+            <p>Je hebt zojuist op een link geklikt die onderdeel is van een <strong>phishing-bewustzijnstest</strong> binnen HMS Haagse Milieu Services.</p>
+
+            <div class="reassurance-box">
+                <span class="check">✅</span>
+                <div>
+                    <p>Er is <strong>geen</strong> data verzameld, er is <strong>geen</strong> malware geïnstalleerd en je account is <strong>volledig veilig</strong>. Je hoeft verder niets te doen.</p>
+                </div>
+            </div>
+
+            <div class="what-happened">
+                <h3>Wat is er gebeurd?</h3>
+                <p>Je ontving een e-mail die leek te komen van een betrouwbare bron. De link in die e-mail leidde naar deze pagina. In het echt had dit een kwaadaardige website kunnen zijn die je gegevens probeert te stelen.</p>
+                <p><strong>Het doel van deze test:</strong> medewerkers bewust maken van phishing-aanvallen zodat we samen HMS veiliger maken.</p>
+            </div>
+        </div>
+
+        <!-- Tips -->
+        <div class="card">
+            <h2>🔍 Hoe herken je phishing?</h2>
+            <p>Let voortaan op de volgende signalen voordat je op een link klikt:</p>
+
+            <ol class="tip-list">
+                <li>
+                    <span class="tip-number">1</span>
+                    <div>
+                        <strong>Controleer het afzenderadres</strong><br>
+                        Kijk goed naar het e-mailadres. Phishing-mails komen vaak van adressen die lijken op echte adressen maar net iets anders zijn (bijv. <em>info@nvhms-dienst.nl</em> in plaats van <em>info@nvhms.nl</em>).
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">2</span>
+                    <div>
+                        <strong>Hover over links vóórdat je klikt</strong><br>
+                        Beweeg je muis over een link zonder te klikken. Onderaan je scherm zie je dan de echte URL. Komt deze niet overeen met wat je verwacht? Niet klikken!
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">3</span>
+                    <div>
+                        <strong>Let op urgentie en dreiging</strong><br>
+                        Phishing-mails proberen je onder druk te zetten: "Je account wordt geblokkeerd!", "Reageer binnen 24 uur!" Echte organisaties communiceren zelden zo.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">4</span>
+                    <div>
+                        <strong>Onverwachte bijlagen? Niet openen!</strong><br>
+                        Open nooit bijlagen van onbekende afzenders of bijlagen die je niet verwacht, ook al lijkt de e-mail van een collega te komen.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">5</span>
+                    <div>
+                        <strong>Controleer op taalfouten</strong><br>
+                        Veel phishing-mails bevatten spelfouten, vreemde zinsbouw of een mix van talen. Dit is vaak een rode vlag.
+                    </div>
+                </li>
+                <li>
+                    <span class="tip-number">6</span>
+                    <div>
+                        <strong>Wordt er om inloggegevens gevraagd?</strong><br>
+                        Geef nooit je wachtwoord, pincode of andere gevoelige gegevens via e-mail of een onbekende website. HMS zal hier nooit per e-mail om vragen.
+                    </div>
+                </li>
+            </ol>
+
+            <div class="example-box">
+                <p><strong>💡 Vuistregel:</strong> Twijfel je? Klik dan niet en neem contact op met je leidinggevende of de IT-afdeling. Liever een keer te veel melden dan te weinig!</p>
+            </div>
+        </div>
+
+        <!-- Wat te doen -->
+        <div class="card card-green">
+            <h2>📩 Wat doe je bij een echte phishing-mail?</h2>
+            <ol class="tip-list">
+                <li>
+                    <span class="tip-number">1</span>
+                    <div><strong>Klik nergens op</strong> — open geen links of bijlagen.</div>
+                </li>
+                <li>
+                    <span class="tip-number">2</span>
+                    <div><strong>Meld het direct</strong> — stuur de verdachte e-mail door naar de IT-afdeling.</div>
+                </li>
+                <li>
+                    <span class="tip-number">3</span>
+                    <div><strong>Verwijder de e-mail</strong> — na het melden kun je de e-mail verwijderen.</div>
+                </li>
+                <li>
+                    <span class="tip-number">4</span>
+                    <div><strong>Al geklikt?</strong> — Wijzig direct je wachtwoord en meld het bij IT.</div>
+                </li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>HMS Haagse Milieu Services</strong></p>
+        <p>Plutostraat 1, 2516 AL Den Haag</p>
+        <p><a href="https://nvhms.nl" target="_blank">nvhms.nl</a> · 070 - 311 77 99</p>
+        <p style="margin-top: 12px; font-size: 12px; opacity: 0.6;">Dit is een interne phishing-bewustzijnstest. Deze pagina is niet bedoeld voor extern gebruik.</p>
+    </div>
+
 </body>
 </html>
+
