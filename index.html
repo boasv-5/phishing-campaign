@@ -4,161 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phishing Awareness Test — HMS Haagse Milieu Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body {
+            font-family:'Inter',sans-serif;
+            color:#333;
+            font-size:16px;
+            line-height:1.7;
+            background:#fff;
+            -webkit-font-smoothing:antialiased;
         }
 
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            font-size: 17px;
-            line-height: 1.7;
-            background: #fff;
-            -webkit-font-smoothing: antialiased;
+        /* ── Colors ── */
+        :root {
+            --blue-dark: #003876;
+            --blue-mid: #00508a;
+            --blue-light: #e8f0f8;
+            --orange: #f08c00;
+            --orange-hover: #d67a00;
+            --white: #ffffff;
+            --gray-bg: #f5f7fa;
+            --gray-text: #555;
+            --dark: #111;
         }
 
         /* ── Header ── */
         .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #e8e8e8;
+            background: var(--blue-dark);
             padding: 0 40px;
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .header-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
 
-        .logo-mark {
-            width: 40px;
-            height: 40px;
-            background: #00875a;
-            border-radius: 10px;
+        .logo-circle {
+            width: 44px;
+            height: 44px;
+            border: 2.5px solid #fff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
-            font-weight: 700;
-            font-size: 13px;
+            font-weight: 800;
+            font-size: 14px;
             letter-spacing: 0.5px;
         }
 
-        .logo-wordmark {
-            font-size: 17px;
-            font-weight: 700;
-            color: #111;
-            letter-spacing: -0.3px;
+        .logo-sub {
+            font-size: 8px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: block;
+            margin-top: -2px;
         }
 
         .header-nav {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 28px;
         }
 
         .header-nav a {
+            color: #fff;
+            text-decoration: none;
             font-size: 15px;
             font-weight: 500;
-            color: #555;
-            text-decoration: none;
-            transition: color 0.2s;
+            opacity: 0.9;
+            transition: opacity 0.2s;
         }
 
-        .header-nav a:hover { color: #00875a; }
+        .header-nav a:hover { opacity: 1; }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: #00875a;
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: var(--orange);
             color: #fff;
             font-size: 15px;
             font-weight: 600;
-            border-radius: 8px;
+            border-radius: 6px;
             text-decoration: none;
             border: none;
             cursor: pointer;
             transition: background 0.2s, transform 0.15s;
         }
 
-        .btn:hover {
-            background: #006d48;
+        .btn-orange:hover {
+            background: var(--orange-hover);
             transform: translateY(-1px);
         }
 
-        .btn-outline {
+        .btn-blue-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
             background: transparent;
-            color: #00875a;
-            border: 2px solid #00875a;
-        }
-
-        .btn-outline:hover {
-            background: #00875a;
             color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 2px solid rgba(255,255,255,0.5);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .btn-sm {
-            padding: 10px 22px;
-            font-size: 14px;
-        }
-
-        /* ── Sections ── */
-        .section {
-            padding: 100px 40px;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
+        .btn-blue-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
         }
 
         /* ── Hero ── */
         .hero {
-            padding: 120px 40px 100px;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+            color: #fff;
+            padding: 100px 40px 90px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.03)" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,218.7C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
 
         .hero-badge {
             display: inline-block;
-            background: #e6f4ed;
-            color: #00875a;
+            background: rgba(240,140,0,0.2);
+            border: 1px solid rgba(240,140,0,0.4);
+            color: var(--orange);
             font-size: 14px;
             font-weight: 600;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
             margin-bottom: 28px;
         }
 
         .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            color: #111;
+            font-size: 52px;
+            font-weight: 800;
             line-height: 1.1;
             letter-spacing: -1px;
-            max-width: 720px;
-            margin: 0 auto 24px;
+            max-width: 700px;
+            margin: 0 auto 20px;
         }
 
         .hero p {
-            font-size: 19px;
-            color: #555;
+            font-size: 18px;
+            opacity: 0.85;
             max-width: 560px;
-            margin: 0 auto 40px;
+            margin: 0 auto 36px;
             line-height: 1.7;
         }
 
@@ -169,206 +187,285 @@
             flex-wrap: wrap;
         }
 
-        /* ── Reassurance ── */
-        .reassurance {
-            background: #f8faf9;
-            border-top: 1px solid #e8ece9;
-            border-bottom: 1px solid #e8ece9;
+        /* ── Quick links bar (like HMS) ── */
+        .quick-links {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0 40px;
         }
 
+        .quick-links-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+        }
+
+        .quick-link {
+            flex: 1;
+            padding: 20px 24px;
+            border-left: 3px solid var(--orange);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .quick-link:not(:first-child) {
+            margin-left: 24px;
+        }
+
+        .quick-link:hover { background: var(--blue-light); }
+
+        .quick-link h4 {
+            color: var(--orange);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .quick-link p {
+            color: var(--gray-text);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* ── Sections ── */
+        .section { padding: 80px 40px; }
+        .container { max-width: 1140px; margin: 0 auto; }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .section-header .label {
+            color: var(--orange);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--blue-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: var(--gray-text);
+        }
+
+        /* ── Reassurance cards ── */
         .reassurance-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
-            text-align: center;
+            gap: 28px;
         }
 
-        .reassurance-item .icon {
+        .r-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 32px;
+            text-align: center;
+            border: 1px solid #e8e8e8;
+            transition: box-shadow 0.25s, transform 0.2s;
+        }
+
+        .r-card:hover {
+            box-shadow: 0 8px 32px rgba(0,56,118,0.08);
+            transform: translateY(-2px);
+        }
+
+        .r-card .icon {
             width: 56px;
             height: 56px;
-            background: #e6f4ed;
+            background: var(--blue-light);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
         }
 
-        .reassurance-item h3 {
-            font-size: 22px;
+        .r-card h3 {
+            font-size: 20px;
             font-weight: 600;
-            color: #111;
-            letter-spacing: -0.3px;
+            color: var(--blue-dark);
             margin-bottom: 8px;
         }
 
-        .reassurance-item p {
-            font-size: 16px;
-            color: #666;
-            max-width: 320px;
-            margin: 0 auto;
+        .r-card p {
+            font-size: 15px;
+            color: var(--gray-text);
         }
 
-        /* ── Split section ── */
-        .split {
+        /* ── Split section (like HMS "Over ons") ── */
+        .split-card {
+            background: var(--gray-bg);
+            border-radius: 12px;
+            overflow: hidden;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+            min-height: 400px;
         }
 
-        .split-text h2 {
-            font-size: 36px;
-            font-weight: 600;
-            color: #111;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .split-text p {
-            font-size: 17px;
-            color: #555;
-            max-width: 480px;
-            margin-bottom: 16px;
-        }
-
-        .split-visual {
-            background: #f4f7f5;
-            border-radius: 16px;
-            padding: 48px;
-            min-height: 380px;
+        .split-card-visual {
+            background: var(--blue-dark);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 40px;
+            position: relative;
         }
 
         .email-mock {
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
             width: 100%;
-            max-width: 380px;
+            max-width: 340px;
             overflow: hidden;
         }
 
         .email-mock-header {
-            background: #f9f9f9;
-            padding: 16px 20px;
-            border-bottom: 1px solid #eee;
+            background: #f4f4f4;
+            padding: 14px 18px;
+            border-bottom: 1px solid #e0e0e0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .email-mock-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ddd;
+        .email-mock-dot { width: 10px; height: 10px; border-radius: 50%; background: #ccc; }
+        .email-mock-dot:nth-child(1) { background: #ff5f57; }
+        .email-mock-dot:nth-child(2) { background: #ffbd2e; }
+        .email-mock-dot:nth-child(3) { background: #28c840; }
+
+        .email-mock-body { padding: 20px; }
+        .email-mock-body .from { font-size: 12px; color: #999; margin-bottom: 12px; }
+        .email-mock-body .from span { color: #e74c3c; font-weight: 600; }
+        .email-mock-body .line { height: 9px; background: #eee; border-radius: 4px; margin-bottom: 8px; }
+        .email-mock-body .line.short { width: 55%; }
+        .email-mock-body .line.medium { width: 80%; }
+        .email-mock-body .bad-link { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #e74c3c; border-radius: 4px; }
+        .email-mock-body .bad-link .line { background: rgba(255,255,255,0.4); width: 80px; margin: 0; height: 8px; }
+
+        .split-card-text {
+            padding: 48px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .email-mock-body {
-            padding: 20px;
-        }
-
-        .email-mock-body .line {
-            height: 10px;
-            background: #eee;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .email-mock-body .line.short { width: 60%; }
-        .email-mock-body .line.medium { width: 85%; }
-
-        .email-mock-body .highlight-line {
-            height: 10px;
-            background: #ff6b6b;
-            border-radius: 4px;
-            width: 50%;
-            margin: 16px 0;
-            opacity: 0.7;
-        }
-
-        .email-mock-body .from-line {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 14px;
-        }
-
-        .email-mock-body .from-line span {
-            color: #ff6b6b;
+        .split-card-text .label {
+            color: var(--orange);
+            font-size: 13px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .split-card-text h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--blue-dark);
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+            margin-bottom: 16px;
+        }
+
+        .split-card-text p {
+            font-size: 16px;
+            color: var(--gray-text);
+            margin-bottom: 12px;
+            max-width: 440px;
+        }
+
+        .split-card-text .highlight {
+            color: var(--blue-dark);
+            font-weight: 600;
+        }
+
+        /* ── Blue underline like HMS ── */
+        .blue-line {
+            width: 48px;
+            height: 3px;
+            background: var(--blue-dark);
+            margin-bottom: 20px;
         }
 
         /* ── Tips grid ── */
         .tips-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            margin-top: 48px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .tip-card {
             background: #fff;
             border: 1px solid #e8e8e8;
-            border-radius: 12px;
-            padding: 32px;
+            border-radius: 10px;
+            padding: 28px;
             transition: box-shadow 0.25s, transform 0.2s;
         }
 
         .tip-card:hover {
-            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 32px rgba(0,56,118,0.08);
             transform: translateY(-2px);
         }
 
         .tip-card .tip-icon {
-            width: 48px;
-            height: 48px;
-            background: #e6f4ed;
-            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            background: var(--blue-light);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 22px;
-            margin-bottom: 18px;
+            font-size: 20px;
+            margin-bottom: 16px;
         }
 
         .tip-card h3 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
-            color: #111;
-            margin-bottom: 8px;
-            letter-spacing: -0.2px;
+            color: var(--blue-dark);
+            margin-bottom: 6px;
         }
 
         .tip-card p {
-            font-size: 15px;
-            color: #666;
+            font-size: 14px;
+            color: var(--gray-text);
             line-height: 1.6;
         }
 
-        /* ── Steps section ── */
+        /* ── Steps ── */
         .steps-list {
             max-width: 600px;
-            margin: 48px auto 0;
+            margin: 0 auto;
         }
 
         .step {
             display: flex;
-            gap: 24px;
-            padding: 28px 0;
+            gap: 20px;
+            padding: 24px 0;
             border-bottom: 1px solid #eee;
         }
 
         .step:last-child { border-bottom: none; }
 
         .step-num {
-            width: 40px;
-            height: 40px;
-            background: #00875a;
+            width: 38px;
+            height: 38px;
+            background: var(--orange);
             color: #fff;
             border-radius: 50%;
             display: flex;
@@ -380,20 +477,20 @@
         }
 
         .step-content h3 {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
-            color: #111;
-            margin-bottom: 4px;
+            color: var(--blue-dark);
+            margin-bottom: 2px;
         }
 
         .step-content p {
-            font-size: 16px;
-            color: #666;
+            font-size: 15px;
+            color: var(--gray-text);
         }
 
         /* ── CTA Banner ── */
         .cta-banner {
-            background: #00875a;
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
             text-align: center;
             padding: 80px 40px;
         }
@@ -403,122 +500,126 @@
             font-weight: 700;
             color: #fff;
             letter-spacing: -0.5px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .cta-banner p {
             font-size: 18px;
-            color: rgba(255,255,255,0.85);
-            max-width: 520px;
-            margin: 0 auto 32px;
+            color: rgba(255,255,255,0.8);
+            max-width: 480px;
+            margin: 0 auto 28px;
         }
 
-        .btn-white {
+        /* ── Footer (HMS style) ── */
+        .footer-contact {
             background: #fff;
-            color: #00875a;
-            font-weight: 700;
+            padding: 0 40px;
+            border-top: 1px solid #e0e0e0;
         }
 
-        .btn-white:hover {
-            background: #f0f0f0;
-            color: #006d48;
+        .footer-contact-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+            padding: 24px 0;
+            justify-content: center;
         }
 
-        /* ── Footer ── */
+        .contact-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border: 1px solid #d0d0d0;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--blue-dark);
+            margin: 0 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-pill:hover {
+            border-color: var(--blue-dark);
+            background: var(--blue-light);
+        }
+
+        .contact-pill .pill-icon {
+            color: var(--orange);
+            font-size: 16px;
+        }
+
         .footer {
-            padding: 60px 40px;
-            border-top: 1px solid #e8e8e8;
+            background: #fff;
+            padding: 32px 40px 40px;
+            border-top: 1px solid #eee;
         }
 
         .footer-inner {
             max-width: 1140px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-            flex-wrap: wrap;
+            text-align: center;
         }
 
-        .footer-brand .logo-wordmark {
-            margin-bottom: 8px;
-        }
-
-        .footer-brand p {
-            font-size: 14px;
-            color: #999;
-            max-width: 280px;
-        }
-
-        .footer-col h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: #111;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .footer-brand {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--blue-dark);
             margin-bottom: 12px;
         }
 
-        .footer-col p,
-        .footer-col a {
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
             font-size: 14px;
-            color: #777;
+            color: var(--gray-text);
             text-decoration: none;
-            display: block;
-            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: color 0.2s;
         }
 
-        .footer-col a:hover { color: #00875a; }
+        .footer-links a .fl-icon { color: var(--orange); }
+        .footer-links a:hover { color: var(--blue-dark); }
 
-        .footer-bottom {
-            max-width: 1140px;
-            margin: 40px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid #eee;
-            font-size: 13px;
-            color: #bbb;
-            text-align: center;
-        }
-
-        /* ── Centered section text ── */
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 16px;
-        }
-
-        .section-header h2 {
-            font-size: 36px;
-            font-weight: 600;
-            color: #111;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 17px;
-            color: #666;
+        .footer-copy {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 16px;
         }
 
         /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .tips-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            .header { padding: 0 20px; height: 64px; }
+            .header { padding: 0 20px; height: 60px; }
             .header-nav .nav-links { display: none; }
-            .hero { padding: 80px 20px 60px; }
-            .hero h1 { font-size: 36px; }
-            .hero p { font-size: 17px; }
-            .section { padding: 60px 20px; }
-            .reassurance-grid { grid-template-columns: 1fr; gap: 32px; }
-            .split { grid-template-columns: 1fr; gap: 40px; }
-            .split.reverse .split-visual { order: -1; }
+            .hero { padding: 70px 20px 60px; }
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 16px; }
+            .section { padding: 50px 20px; }
+            .reassurance-grid { grid-template-columns: 1fr; }
+            .split-card { grid-template-columns: 1fr; }
+            .split-card-visual { min-height: 260px; }
             .tips-grid { grid-template-columns: 1fr; }
-            .footer-inner { flex-direction: column; }
-            .cta-banner { padding: 60px 20px; }
+            .quick-links-inner { flex-direction: column; }
+            .quick-link:not(:first-child) { margin-left: 0; }
+            .quick-link { border-left: 3px solid var(--orange); }
+            .cta-banner { padding: 50px 20px; }
             .cta-banner h2 { font-size: 28px; }
-            .section-header h2 { font-size: 28px; }
-            .split-text h2 { font-size: 28px; }
+            .contact-pill { margin: 4px; font-size: 13px; padding: 10px 18px; }
+            .footer-contact-inner { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -527,47 +628,67 @@
     <!-- ── Header ── -->
     <header class="header">
         <a href="https://nvhms.nl" class="header-logo">
-            <div class="logo-mark">HMS</div>
-            <div class="logo-wordmark">Haagse Milieu Services</div>
+            <div class="logo-circle">
+                HMS
+                <span class="logo-sub"></span>
+            </div>
         </a>
         <nav class="header-nav">
             <span class="nav-links">
                 <a href="#wat-gebeurd">Wat is er gebeurd?</a>
-                <a href="#herkennen">Phishing herkennen</a>
+                <a href="#herkennen">Herkennen</a>
                 <a href="#actie">Wat nu?</a>
             </span>
-            <a href="https://nvhms.nl" class="btn btn-sm" target="_blank">Naar nvhms.nl →</a>
+            <a href="https://nvhms.nl" class="btn-orange" target="_blank">🌐 &nbsp;nvhms.nl</a>
         </nav>
     </header>
 
     <!-- ── Hero ── -->
     <section class="hero">
-        <div class="container">
+        <div class="hero-content container">
             <div class="hero-badge">⚠️ &nbsp;Phishing Awareness Test</div>
-            <h1>Geen zorgen, dit was een test.</h1>
-            <p>Je hebt op een gesimuleerde phishing-link geklikt. Er is niets aan de hand — geen gegevens gestolen, geen malware geïnstalleerd. Lees hieronder hoe je phishing voortaan herkent.</p>
+            <h1>Geen zorgen, dit was alleen een test.</h1>
+            <p>Je hebt op een gesimuleerde phishing-link geklikt. Er is niets aan de hand — geen gegevens gestolen, geen malware geïnstalleerd.</p>
             <div class="hero-actions">
-                <a href="#herkennen" class="btn">Bekijk de tips</a>
-                <a href="#actie" class="btn btn-outline">Wat moet ik doen?</a>
+                <a href="#herkennen" class="btn-orange">Bekijk de tips &nbsp;→</a>
+                <a href="#actie" class="btn-blue-outline">Wat moet ik doen?</a>
             </div>
         </div>
     </section>
 
+    <!-- ── Quick links bar ── -->
+    <div class="quick-links">
+        <div class="quick-links-inner">
+            <a href="#wat-gebeurd" class="quick-link">
+                <h4>Wat is er gebeurd?</h4>
+                <p>Uitleg over deze test</p>
+            </a>
+            <a href="#herkennen" class="quick-link">
+                <h4>Phishing herkennen</h4>
+                <p>6 tips om veilig te blijven</p>
+            </a>
+            <a href="#actie" class="quick-link">
+                <h4>Wat moet ik doen?</h4>
+                <p>Stappen bij een echte aanval</p>
+            </a>
+        </div>
+    </div>
+
     <!-- ── Reassurance ── -->
-    <section class="section reassurance" id="wat-gebeurd">
+    <section class="section" style="background:var(--gray-bg);" id="wat-gebeurd">
         <div class="container">
             <div class="reassurance-grid">
-                <div class="reassurance-item">
+                <div class="r-card">
                     <div class="icon">🔒</div>
                     <h3>Geen data verzameld</h3>
                     <p>Er zijn geen persoonlijke gegevens, wachtwoorden of andere informatie opgeslagen.</p>
                 </div>
-                <div class="reassurance-item">
+                <div class="r-card">
                     <div class="icon">🛡️</div>
                     <h3>Geen malware</h3>
                     <p>Er is niets gedownload of geïnstalleerd op je apparaat. Je systeem is veilig.</p>
                 </div>
-                <div class="reassurance-item">
+                <div class="r-card">
                     <div class="icon">✅</div>
                     <h3>Puur educatief</h3>
                     <p>Deze test is opgezet om medewerkers bewust te maken van phishing-risico's.</p>
@@ -576,17 +697,11 @@
         </div>
     </section>
 
-    <!-- ── Split: Wat is phishing? ── -->
+    <!-- ── Split: Wat is phishing? (HMS "Over ons" style) ── -->
     <section class="section">
         <div class="container">
-            <div class="split">
-                <div class="split-text">
-                    <h2>Wat is er precies gebeurd?</h2>
-                    <p>Je ontving een e-mail die eruitzag alsof deze van een betrouwbare bron kwam. De link in die e-mail leidde naar deze pagina.</p>
-                    <p>In het echt had dit een kwaadaardige website kunnen zijn die probeert je inloggegevens te stelen, malware te installeren of gevoelige informatie te onderscheppen.</p>
-                    <p style="color:#111; font-weight:500;">Het goede nieuws: dit was slechts een simulatie. Maar de volgende keer is het misschien echt.</p>
-                </div>
-                <div class="split-visual">
+            <div class="split-card">
+                <div class="split-card-visual">
                     <div class="email-mock">
                         <div class="email-mock-header">
                             <div class="email-mock-dot"></div>
@@ -594,32 +709,44 @@
                             <div class="email-mock-dot"></div>
                         </div>
                         <div class="email-mock-body">
-                            <div class="from-line">Van: <span>noreply@nvhms-dienst.nl</span> ← verdacht!</div>
+                            <div class="from">Van: <span>noreply@nvhms-dienst.nl</span> ← verdacht!</div>
                             <div class="line medium"></div>
                             <div class="line"></div>
                             <div class="line short"></div>
-                            <div class="highlight-line"></div>
-                            <div class="line medium"></div>
-                            <div class="line short"></div>
+                            <div class="bad-link"><div class="line" style="margin:0;background:rgba(255,255,255,0.5);"></div></div>
+                            <div style="margin-top:12px;">
+                                <div class="line medium"></div>
+                                <div class="line short"></div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="split-card-text">
+                    <div class="label">Over deze test</div>
+                    <h2>Haagse Milieu Services</h2>
+                    <div class="blue-line"></div>
+                    <p>Je ontving een e-mail die eruitzag alsof deze van een betrouwbare bron kwam. De link in die e-mail leidde naar deze pagina.</p>
+                    <p>In het echt had dit een kwaadaardige website kunnen zijn die probeert je inloggegevens te stelen of malware te installeren.</p>
+                    <p class="highlight">Het goede nieuws: dit was slechts een simulatie. Maar de volgende keer is het misschien echt.</p>
+                    <a href="#herkennen" style="color:var(--orange); font-weight:600; text-decoration:none; font-size:15px; margin-top:8px;">Lees meer →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ── Tips ── -->
-    <section class="section" style="background:#fafbfa;" id="herkennen">
+    <section class="section" style="background:var(--gray-bg);" id="herkennen">
         <div class="container">
             <div class="section-header">
+                <div class="label">Phishing herkennen</div>
                 <h2>Zo herken je phishing</h2>
-                <p>Let voortaan op deze zes signalen voordat je op een link klikt of een bijlage opent.</p>
+                <p>Let voortaan op deze signalen voordat je op een link klikt of een bijlage opent.</p>
             </div>
             <div class="tips-grid">
                 <div class="tip-card">
                     <div class="tip-icon">📧</div>
                     <h3>Controleer de afzender</h3>
-                    <p>Kijk goed naar het e-mailadres. Phishing-mails komen vaak van adressen die net iets afwijken, zoals <em>info@nvhms-dienst.nl</em> in plaats van <em>info@nvhms.nl</em>.</p>
+                    <p>Phishing-mails komen vaak van adressen die net iets afwijken, zoals <em>info@nvhms-dienst.nl</em> in plaats van <em>info@nvhms.nl</em>.</p>
                 </div>
                 <div class="tip-card">
                     <div class="tip-icon">🔗</div>
@@ -644,7 +771,7 @@
                 <div class="tip-card">
                     <div class="tip-icon">🔑</div>
                     <h3>Nooit inloggegevens delen</h3>
-                    <p>HMS zal je nooit per e-mail vragen om je wachtwoord, pincode of andere gevoelige gegevens te delen.</p>
+                    <p>HMS zal je nooit per e-mail vragen om je wachtwoord of andere gevoelige gegevens te delen.</p>
                 </div>
             </div>
         </div>
@@ -654,6 +781,7 @@
     <section class="section" id="actie">
         <div class="container">
             <div class="section-header">
+                <div class="label">Actie ondernemen</div>
                 <h2>Wat doe je bij een echte phishing-mail?</h2>
                 <p>Volg deze vier stappen als je een verdachte e-mail ontvangt.</p>
             </div>
@@ -694,33 +822,31 @@
     <section class="cta-banner">
         <h2>Twijfel je? Klik dan niet.</h2>
         <p>Neem liever een keer te veel contact op met de IT-afdeling dan een keer te weinig.</p>
-        <a href="https://nvhms.nl/contact/" class="btn btn-white" target="_blank">Neem contact op</a>
+        <a href="https://nvhms.nl/contact/" class="btn-orange" target="_blank">📞 &nbsp;Neem contact op</a>
     </section>
+
+    <!-- ── Footer contact pills (HMS style) ── -->
+    <div class="footer-contact">
+        <div class="footer-contact-inner">
+            <a class="contact-pill" href="#"><span class="pill-icon">📍</span> Plutostraat 1, 2516 AL Den Haag</a>
+            <a class="contact-pill" href="tel:0703117799"><span class="pill-icon">📞</span> 070 – 311 77 99</a>
+            <a class="contact-pill" href="#"><span class="pill-icon">🕐</span> Ma – vr, 08:00 – 17:00 uur</a>
+        </div>
+    </div>
 
     <!-- ── Footer ── -->
     <footer class="footer">
         <div class="footer-inner">
-            <div class="footer-brand">
-                <div class="logo-wordmark">Haagse Milieu Services</div>
-                <p>Een schoon en leefbaar Den Haag voor alle inwoners.</p>
+            <div class="footer-brand">NV Haagse Milieu Services</div>
+            <div class="footer-links">
+                <a href="https://nvhms.nl" target="_blank"><span class="fl-icon">🌐</span> nvhms.nl</a>
+                <a href="https://nvhms.nl/contact/" target="_blank"><span class="fl-icon">✉️</span> Contact met HMS</a>
             </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Plutostraat 1</p>
-                <p>2516 AL Den Haag</p>
-                <p>070 - 311 77 99</p>
+            <div class="footer-copy">
+                © 2026 NV Haagse Milieu Services — Dit is een interne phishing-bewustzijnstest. Niet bedoeld voor extern gebruik.
             </div>
-            <div class="footer-col">
-                <h4>Links</h4>
-                <a href="https://nvhms.nl" target="_blank">nvhms.nl</a>
-                <a href="https://nvhms.nl/contact/" target="_blank">Contact</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            © 2026 NV Haagse Milieu Services — Dit is een interne phishing-bewustzijnstest. Niet bedoeld voor extern gebruik.
         </div>
     </footer>
 
 </body>
 </html>
-
