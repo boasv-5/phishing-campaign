@@ -24,20 +24,22 @@
             --gray-bg: #f5f7fa;
         }
 
-        /* Header */
+        /* Header - Minimal */
         .header {
             background: var(--blue-dark);
-            padding: 16px 40px;
+            padding: 12px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            position: sticky;
+            position: absolute;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
         }
 
         .logo {
-            height: 40px;
+            height: 32px;
             display: flex;
             align-items: center;
         }
@@ -49,7 +51,7 @@
 
         .header-nav {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
         }
 
@@ -64,48 +66,66 @@
 
         .header-nav a:hover { opacity: 1; }
 
-        .btn {
+        .btn-small {
             display: inline-block;
-            padding: 10px 24px;
+            padding: 8px 20px;
             background: var(--orange);
             color: #fff;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
-            border-radius: 6px;
+            border-radius: 4px;
             text-decoration: none;
             border: none;
             cursor: pointer;
             transition: background 0.2s;
         }
 
-        .btn:hover { background: #d67a00; }
+        .btn-small:hover { background: #d67a00; }
 
         /* Hero */
         .hero {
-            background: linear-gradient(rgba(0, 56, 118, 0.5), rgba(0, 56, 118, 0.5)), url('Topvisual-Main-office-HMS.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 56, 118, 0.4), rgba(0, 56, 118, 0.4)), url('Topvisual-Main-office-HMS.jpg') center/cover no-repeat;
             color: #fff;
-            padding: 100px 40px;
+            padding: 80px 40px 100px;
             text-align: center;
             min-height: 500px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            margin-top: 56px;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 52px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             letter-spacing: -0.5px;
         }
 
         .hero p {
-            font-size: 17px;
-            opacity: 0.9;
-            max-width: 500px;
-            margin: 0 auto 28px;
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
         }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 12px 32px;
+            background: #fff;
+            color: var(--blue-dark);
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 4px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-hero:hover { background: #f0f0f0; }
 
         /* Content */
         .section {
@@ -113,147 +133,148 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .content-box {
-            background: #fff;
-            border-radius: 8px;
-            padding: 40px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        }
-
-        .content-box h2 {
-            font-size: 28px;
+        .section h2 {
+            font-size: 32px;
             font-weight: 700;
             color: var(--blue-dark);
-            margin-bottom: 16px;
+            margin-bottom: 32px;
+            text-align: center;
+            letter-spacing: -0.5px;
         }
 
-        .content-box p {
-            font-size: 15px;
-            color: #555;
-            margin-bottom: 12px;
-            line-height: 1.7;
-        }
-
-        .content-box ul {
-            list-style: none;
-            margin: 16px 0;
-        }
-
-        .content-box li {
-            padding: 8px 0;
-            font-size: 15px;
-            color: #555;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .content-box li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--orange);
-            border-radius: 50%;
-        }
-
-        .highlight {
-            background: #e8f0f8;
-            border-left: 4px solid var(--orange);
-            padding: 16px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .highlight p { margin: 0; font-weight: 500; color: var(--blue-dark); }
-
-        .grid-2 {
+        /* Reassurance Grid */
+        .reassurance-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
-            margin-top: 24px;
+            margin-bottom: 24px;
         }
 
-        .grid-item {
-            background: var(--gray-bg);
-            padding: 24px;
-            border-radius: 8px;
+        .reassurance-item {
+            background: #f5f7fa;
             border-left: 4px solid var(--orange);
+            padding: 24px;
+            border-radius: 4px;
         }
 
-        .grid-item h3 {
-            font-size: 16px;
+        .reassurance-item h3 {
+            font-size: 18px;
             font-weight: 600;
             color: var(--blue-dark);
             margin-bottom: 8px;
         }
 
-        .grid-item p {
-            font-size: 14px;
-            color: #666;
-            margin: 0;
+        .reassurance-item p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
         }
 
-        /* CTA */
-        .cta-section {
-            background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
-            color: #fff;
-            text-align: center;
-            padding: 50px 40px;
-            border-radius: 8px;
-            margin-top: 40px;
+        .reassurance-highlight {
+            background: #e8f0f8;
+            border-left: 4px solid var(--orange);
+            padding: 24px;
+            border-radius: 4px;
+            grid-column: 1 / -1;
         }
 
-        .cta-section h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .cta-section p {
-            font-size: 15px;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .btn-white {
-            background: #fff;
+        .reassurance-highlight p {
+            font-size: 16px;
             color: var(--blue-dark);
-            font-weight: 700;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.6;
         }
 
-        .btn-white:hover {
-            background: #f0f0f0;
+        /* Tips */
+        .tips-list {
+            list-style: none;
+        }
+
+        .tips-list li {
+            padding: 16px 0;
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            border-bottom: 1px solid #e8e8e8;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .tips-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tips-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 22px;
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .tips-list strong {
+            color: var(--blue-dark);
+            font-weight: 600;
+        }
+
+        /* Actions Grid */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .action-item {
+            background: #f5f7fa;
+            border-left: 4px solid var(--orange);
+            padding: 24px;
+            border-radius: 4px;
+        }
+
+        .action-item h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--blue-dark);
+            margin-bottom: 8px;
+        }
+
+        .action-item p {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.6;
         }
 
         /* Footer */
         .footer {
             background: var(--blue-dark);
             color: #fff;
-            padding: 30px 40px;
+            padding: 32px 40px;
             text-align: center;
-            font-size: 13px;
-            opacity: 0.8;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .header { flex-direction: column; gap: 12px; padding: 12px 20px; }
-            .header-nav { width: 100%; justify-content: space-between; }
-            .hero { padding: 60px 20px; min-height: 350px; }
-            .hero h1 { font-size: 28px; }
-            .hero p { font-size: 15px; }
+            .header { padding: 10px 20px; }
+            .header-nav { gap: 12px; }
+            .header-nav a { display: none; }
+            .hero { padding: 60px 20px 80px; margin-top: 50px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
             .section { padding: 40px 20px; }
-            .content-box { padding: 24px; }
-            .content-box h2 { font-size: 22px; }
-            .grid-2 { grid-template-columns: 1fr; }
+            .section h2 { font-size: 24px; }
+            .reassurance-grid { grid-template-columns: 1fr; }
+            .actions-grid { grid-template-columns: 1fr; }
+            .logo { height: 28px; }
         }
     </style>
 </head>
@@ -265,9 +286,7 @@
             <img src="HMS-logo-wit.svg" alt="HMS Logo">
         </div>
         <nav class="header-nav">
-            <a href="#tips">Tips</a>
-            <a href="#actie">Actie</a>
-            <a href="https://nvhms.nl" target="_blank" class="btn">Naar nvhms.nl</a>
+            <a href="https://nvhms.nl" target="_blank" class="btn-small">Naar nvhms.nl</a>
         </nav>
     </header>
 
@@ -275,72 +294,66 @@
     <section class="hero">
         <h1>Je bent gephished!</h1>
         <p>Dit was een test van HMS. Je hebt op een nep-link geklikt. Er is niets aan de hand — geen data gestolen, geen malware.</p>
-        <a href="#tips" class="btn" style="background:#fff; color:var(--blue-dark);">Bekijk de tips</a>
+        <a href="#tips" class="btn-hero">Bekijk de tips</a>
     </section>
 
-    <!-- Main content -->
+    <!-- Reassurance -->
     <section class="section">
         <div class="container">
-
-            <!-- Reassurance -->
-            <div class="content-box">
-                <h2>Geen zorgen, je bent veilig</h2>
-                <div class="grid-2">
-                    <div class="grid-item">
-                        <h3>Geen data verzameld</h3>
-                        <p>Er zijn geen persoonlijke gegevens of wachtwoorden opgeslagen.</p>
-                    </div>
-                    <div class="grid-item">
-                        <h3>Geen malware</h3>
-                        <p>Er is niets gedownload op je apparaat. Je systeem is veilig.</p>
-                    </div>
+            <h2>Geen zorgen, je bent veilig</h2>
+            <div class="reassurance-grid">
+                <div class="reassurance-item">
+                    <h3>Geen data verzameld</h3>
+                    <p>Er zijn geen persoonlijke gegevens of wachtwoorden opgeslagen.</p>
                 </div>
-                <div class="highlight" style="margin-top:24px;">
+                <div class="reassurance-item">
+                    <h3>Geen malware</h3>
+                    <p>Er is niets gedownload op je apparaat. Je systeem is veilig.</p>
+                </div>
+                <div class="reassurance-highlight">
                     <p>Dit was een educatieve test. De volgende keer kan het echt zijn. Lees hieronder hoe je jezelf beschermt.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Tips -->
-            <div class="content-box" id="tips">
-                <h2>Hoe herken je phishing?</h2>
-                <ul>
-                    <li><strong>Controleer de afzender</strong> — Phishing-mails hebben vaak adressen die net iets afwijken (bijv. nvhms-dienst.nl in plaats van nvhms.nl)</li>
-                    <li><strong>Hover over links</strong> — Beweeg je muis erover zonder te klikken. De echte URL verschijnt onderaan je scherm.</li>
-                    <li><strong>Let op urgentie</strong> — "Je account wordt geblokkeerd!" of "Reageer nu!" zijn rode vlaggen.</li>
-                    <li><strong>Geen onverwachte bijlagen</strong> — Open nooit bijlagen die je niet verwacht.</li>
-                    <li><strong>Taalfouten</strong> — Spelfouten en vreemde zinsbouw zijn verdacht.</li>
-                    <li><strong>Nooit inloggegevens delen</strong> — HMS vraagt je nooit per e-mail om je wachtwoord.</li>
-                </ul>
-            </div>
+    <!-- Tips -->
+    <section class="section" id="tips">
+        <div class="container">
+            <h2>Hoe herken je phishing?</h2>
+            <ul class="tips-list">
+                <li><strong>Controleer de afzender</strong> — Phishing-mails hebben vaak adressen die net iets afwijken (bijv. nvhms-dienst.nl in plaats van nvhms.nl)</li>
+                <li><strong>Hover over links</strong> — Beweeg je muis erover zonder te klikken. De echte URL verschijnt onderaan je scherm.</li>
+                <li><strong>Let op urgentie</strong> — "Je account wordt geblokkeerd!" of "Reageer nu!" zijn rode vlaggen.</li>
+                <li><strong>Geen onverwachte bijlagen</strong> — Open nooit bijlagen die je niet verwacht.</li>
+                <li><strong>Taalfouten</strong> — Spelfouten en vreemde zinsbouw zijn verdacht.</li>
+                <li><strong>Nooit inloggegevens delen</strong> — HMS vraagt je nooit per e-mail om je wachtwoord.</li>
+            </ul>
+        </div>
+    </section>
 
-            <!-- Actie -->
-            <div class="content-box" id="actie">
-                <h2>Wat doe je bij een echte phishing-mail?</h2>
-                <div class="grid-2">
-                    <div class="grid-item">
-                        <h3>Stap 1: Klik nergens op</h3>
-                        <p>Open geen links of bijlagen in verdachte mails.</p>
-                    </div>
-                    <div class="grid-item">
-                        <h3>Stap 2: Meld het</h3>
-                        <p>Stuur de mail door naar de IT-afdeling.</p>
-                    </div>
-                    <div class="grid-item">
-                        <h3>Stap 3: Verwijder</h3>
-                        <p>Verwijder de mail uit je inbox.</p>
-                    </div>
-                    <div class="grid-item">
-                        <h3>Stap 4: Wachtwoord</h3>
-                        <p>Heb je geklikt? Wijzig direct je wachtwoord.</p>
-                    </div>
+    <!-- Actions -->
+    <section class="section">
+        <div class="container">
+            <h2>Wat doe je bij een echte phishing-mail?</h2>
+            <div class="actions-grid">
+                <div class="action-item">
+                    <h3>Stap 1: Klik nergens op</h3>
+                    <p>Open geen links of bijlagen in verdachte mails.</p>
                 </div>
-                <div class="cta-section">
-                    <h2>Twijfel je? Klik dan niet.</h2>
-                    <p>Neem liever contact op met IT dan dat je risico loopt.</p>
-                    <a href="https://nvhms.nl/contact/" target="_blank" class="btn btn-white">Contact met HMS</a>
+                <div class="action-item">
+                    <h3>Stap 2: Meld het</h3>
+                    <p>Stuur de mail door naar de IT-afdeling.</p>
+                </div>
+                <div class="action-item">
+                    <h3>Stap 3: Verwijder</h3>
+                    <p>Verwijder de mail uit je inbox.</p>
+                </div>
+                <div class="action-item">
+                    <h3>Stap 4: Wachtwoord</h3>
+                    <p>Heb je geklikt? Wijzig direct je wachtwoord.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
